@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -22,6 +23,10 @@ public class UserDetailPage {
     @FindBy(xpath = "//*[contains(@class,'btn-ghost-dark')]")
     WebElement editIconButton;
 
+    public WebElement getUsernameField() {
+        return usernameField;
+    }
+
     @FindBy(id = "username")
     WebElement usernameField;
     @FindBy(xpath = "//*[contains(@class,'btn-ghost-primary')]")
@@ -36,7 +41,31 @@ public class UserDetailPage {
 
     @FindBy(xpath = "//button[contains(@class,'text-white')]")
     WebElement saveRoleButton;
+    @FindBy(id = "name")
+    WebElement nameField;
 
+
+    public WebElement getEmailField() {
+        return emailField;
+    }
+
+    @FindBy(id = "email")
+    WebElement emailField;
+
+
+    public WebElement getErrorMessage() {
+        return errorMessage;
+    }
+
+    @FindBy(xpath = "//span[@class='text-danger']")
+    WebElement errorMessage;
+
+    public WebElement getUpdatedSuccessMessage() {
+        return updatedSuccessMessage;
+    }
+
+    @FindBy (xpath = "//*[contains(text(),'User information updated successfully']")
+    WebElement updatedSuccessMessage;
     public void clickOnResetPasswordButton() {
         resetPasswordButton.click();
     }
@@ -68,5 +97,26 @@ public class UserDetailPage {
     public void clickSaveRoleButton(){
         saveRoleButton.click();
     }
+    public void enterName(String name){
+        nameField.sendKeys(name);
+    }
+    //This method suppose to be in UsersPage
+
+    public void getFakeEmail(){
+        String mainWindowHandle = Driver.getDriver().getWindowHandle();
+        Driver.getDriver().get("https://temp-mail.org/en");
+        String fakeEmailWindowHandle = Driver.getDriver().getWindowHandle();
+        WebElement copyButton=Driver.getDriver().findElement(By.id("click-to-copy"));
+        copyButton.click();
+        Driver.getDriver().switchTo().window(mainWindowHandle);
+        //Then create a new member with that email
+
+
+    }
+    public void verifyFakeEmail(){
+
+    }
+
+
 
 }
