@@ -7,36 +7,34 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.UserDetailPage;
+import pages.*;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 import java.time.Duration;
-
+@Listeners(utilities.Listeners.class)
 public class US_0016 {
     UserDetailPage userDetailPage = new UserDetailPage();
+    WelcomePage welcomePage = new WelcomePage();
+    LoginPage loginPage = new LoginPage();
+    UsersPage usersPage=new UsersPage();
 
-    @Test
+
+    @Test(description = "To verify that the default role cannot be deleted on the User Detail page")
     public void TC01(){
         //The Default Role Tage name is not Button, therefor user cannot delete the default role
         //But We can change the default role to another role and delete the previous default role
 
     }
-    @Test
+    @Test(description = "To verify that the user email cannot be changed")
     public void TC02(){
         //The Email field Tage name is not input, therefor user cannot type on it,
         //we can check if the tage name is label then it not editable
-        Driver.getDriver().get("https://qa-gm3.quaspareparts.com/");
-        Driver.getDriver().findElement(By.xpath("//a[@class='login-button']")).click();
-        Driver.getDriver().manage().window().maximize();
-
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys("bo@qualitron.com");
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("cR2hHF0xq4L-m9h");
-        WebElement loginButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
-        loginButton.click();
-        Driver.getDriver().findElement(By.xpath("//a[@href='#/users']//*[name()='svg']")).click();
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='jemel55942@losvtn.com']")).click();
         userDetailPage.clickOnEditIconButton();
         String emailFieldTagName = userDetailPage.getEmailField().getTagName();
@@ -45,22 +43,12 @@ public class US_0016 {
 
     }
 
-    @Test
+    @Test(description = "To verify that the username cannot be empty while editing the user Information on the User Detail page")
     public void TC03() {
 
-        Driver.getDriver().get("https://qa-gm3.quaspareparts.com/");
-        Driver.getDriver().findElement(By.xpath("//a[@class='login-button']")).click();
-        Driver.getDriver().manage().window().maximize();
-
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys("bo@qualitron.com");
-
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("cR2hHF0xq4L-m9h");
-
-        WebElement loginButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
-        loginButton.click();
-        Driver.getDriver().findElement(By.xpath("//a[@href='#/users']//*[name()='svg']")).click();
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='jemel55942@losvtn.com']")).click();
         userDetailPage.clickOnEditIconButton();
         try {
@@ -75,21 +63,11 @@ public class US_0016 {
         Assert.assertTrue(userDetailPage.getErrorMessage().isDisplayed());
     }
 
-    @Test
+    @Test(description = "To verify that the username accepts any username except the empty field while editing the user information ")
     public void TC04(){
-        Driver.getDriver().get("https://qa-gm3.quaspareparts.com/");
-        Driver.getDriver().findElement(By.xpath("//a[@class='login-button']")).click();
-        Driver.getDriver().manage().window().maximize();
-
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys("bo@qualitron.com");
-
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("cR2hHF0xq4L-m9h");
-
-        WebElement loginButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
-        loginButton.click();
-        Driver.getDriver().findElement(By.xpath("//a[@href='#/users']//*[name()='svg']")).click();
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='jemel55942@losvtn..com']")).click();
         userDetailPage.clickOnEditIconButton();
         try {
@@ -116,13 +94,33 @@ public class US_0016 {
         Assert.assertTrue(userDetailPage.getUpdatedSuccessMessage().isDisplayed());
 
     }
-    @Test
+
+    @Test(description = "To verify that the user can Reset Password on the User Detail page")
     public void TC05(){
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        usersPage.userModule.click();
+        Driver.getDriver().findElement(By.xpath("//a[normalize-space()='jemel55942@losvtn.com']")).click();
+        String newPassword = userDetailPage.resetPassword();
+        userDetailPage.logout();
+        //Try to log in with new password
+        welcomePage.loginButton.click();
+        loginPage.login("jemel55942@losvtn.com", newPassword);
+        //Assert That the new password is valid
+        Assert.assertTrue(userDetailPage.getProfileHeader().isDisplayed());
+
 
     }
 
-    @Test
+    @Test(description = "To verify that the user can add another role in the User Detail page")
     public void TC06(){
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        usersPage.userModule.click();
+        Driver.getDriver().findElement(By.xpath("//a[normalize-space()='jemel55942@losvtn.com']")).click();
+        userDetailPage.addNewRole();
 
     }
 
