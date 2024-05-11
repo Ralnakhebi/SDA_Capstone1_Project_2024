@@ -7,12 +7,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.RoleDetailPage;
 import pages.RolesPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+
 @Listeners(utilities.Listeners.class)
-public class US_0018 {
+public class US_0019 {
     RolesPage rolesPage = new RolesPage();
+    RoleDetailPage roleDetailPage = new RoleDetailPage();
     @BeforeMethod
     public void setUp() throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
@@ -25,14 +28,18 @@ public class US_0018 {
     public void tearDown(){
         Driver.closeDriver();
     }
-    @Test(testName = "TC01")
-    public void rolesListedTest(){
-        rolesPage.rolesModule.click();
+    @Test(testName = "TC01", description = "roles are clickable and permissions are listed")
+    public void rolesAndPermissionsTest(){
 
-        for(WebElement role : rolesPage.rolesList){
-            System.out.println(role.getText());
-            Assert.assertTrue(role.isDisplayed());
+        rolesPage.rolesModule.click(); // click on roles module
+
+        // for loop to click roles one by one and verify permissions are listed
+        for(int i=0; i<rolesPage.rolesList.size(); i++){
+            rolesPage.rolesList.get(i).click();
+            Assert.assertTrue(roleDetailPage.roleInfoTitle.isDisplayed());
+            Assert.assertTrue(roleDetailPage.permissionsList.size()>0);
+            rolesPage.rolesModule.click(); // go back to roles page
         }
-        Assert.assertEquals(rolesPage.rolesList.size(),16);
+
     }
 }
