@@ -32,7 +32,7 @@ public class US_0001 {
 
 
         // Enter UserName and Password and Click in sign In button
-        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));
 
         //assertion for the title of the page after login
         String title = Driver.getDriver().getTitle();

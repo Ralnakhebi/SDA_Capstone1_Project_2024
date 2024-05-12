@@ -28,7 +28,7 @@ public class US_0020 {
 
 
         // Enter UserName and Password and Click in sign In button
-        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
+        loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));
 
         // click and verify ArrowCollapseButton
         profilePage.ArrowCollapseButton.click();
