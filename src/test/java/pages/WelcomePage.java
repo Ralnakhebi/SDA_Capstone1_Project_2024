@@ -16,7 +16,7 @@ public class WelcomePage {
     @FindBy(xpath = "//*[text()='Login']")
     public WebElement loginButton;
 
-    // xpath for the Title in thw Welcome Page
+    // xpath for the Title in the Welcome Page
     @FindBy(xpath = "//h1[.='Welcome to QuaSpareparts.com']")
     public WebElement homePageTitle;
 
