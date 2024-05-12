@@ -1,0 +1,1 @@
+{"uuid":"1e1fc910-a98f-4d10-8294-f626118e7e7b","name":"tests.teams.US_0013.setUp","children":["9923f1f7-f9be-478a-8b84-59ff069f04c8"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1715525627268,"stop":1715525639404}],"afters":[],"start":1715525627267,"stop":1715525639404}

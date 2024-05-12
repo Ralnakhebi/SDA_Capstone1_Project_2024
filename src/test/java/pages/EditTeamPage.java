@@ -27,7 +27,7 @@ public class EditTeamPage {
     @FindBy(xpath = "//input[@id='name']")
     public WebElement EditTeamName;
 
-  @FindBy(xpath = "(//*[contains(@id,'react-select-2-input')])")
+  @FindBy(xpath = "//input[@id='react-select-2-input']")
 
   public WebElement EditDepartmentType;
 
