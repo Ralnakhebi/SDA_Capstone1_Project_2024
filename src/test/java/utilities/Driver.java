@@ -9,7 +9,7 @@ import java.time.Duration;
 public class Driver {
 
     // Create a private static WebDriver object
-    private static ThreadLocal<WebDriver> driver=new ThreadLocal<>();
+    public static ThreadLocal<WebDriver> driver=new ThreadLocal<>();
     // To make a singleton driver, make the constructor private, so that no objects can be created from outside classes.
     private Driver() { // Constructor Driver
     }
