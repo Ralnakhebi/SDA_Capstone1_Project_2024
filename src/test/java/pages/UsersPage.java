@@ -80,6 +80,7 @@ public class UsersPage {
     public boolean toCheckTheUserAppearing(String userEmail){
         boolean isDisplayed=false;
         List<WebElement>rows = usersList.findElements(By.xpath(".//tr"));
+
             for (WebElement w : rows) {
                 if(isDisplayed){
                     break;
@@ -98,5 +99,6 @@ public class UsersPage {
         Driver.getDriver().findElement(By.xpath("//a[@class='dropdown-item' and contains(text(),'Remove')]")).click();
         return isDisplayed;
     }
+
 
 }

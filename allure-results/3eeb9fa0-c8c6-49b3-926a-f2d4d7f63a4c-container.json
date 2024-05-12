@@ -1,0 +1,1 @@
+{"uuid":"3eeb9fa0-c8c6-49b3-926a-f2d4d7f63a4c","name":"tests.roles.US_0018.setUp","children":["10022133-1930-4008-914a-233f98696a7f"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1715502299697,"stop":1715502308117}],"afters":[],"start":1715502299697,"stop":1715502308119}

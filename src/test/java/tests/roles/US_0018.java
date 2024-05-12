@@ -7,19 +7,21 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 import pages.RolesPage;
+import pages.WelcomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 @Listeners(utilities.Listeners.class)
 public class US_0018 {
     RolesPage rolesPage = new RolesPage();
+    WelcomePage welcomePage = new WelcomePage();
+    LoginPage loginPage = new LoginPage();
     @BeforeMethod
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
-        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
-        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+        welcomePage.loginButton.click();
+        loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
     }
     @AfterMethod
     public void tearDown(){
