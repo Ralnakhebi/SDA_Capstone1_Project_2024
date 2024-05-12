@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" >
+    <test verbose="2" preserve-order="true"  name="SDA_Capstone1_Project_2024">
+        <classes>
+            <class name="tests.departments.US_0008">
+                <methods>
+                    <include name="verifyDepartmentType"/>
+                    <include name="verifyDepartmentName"/>
+                    <include name="addDepartment"/>
+                </methods>
+            </class>
+            <class name="tests.departments.US_0007">
+                <methods>
+                    <include name="displayDepartment"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
