@@ -18,26 +18,29 @@ import java.util.List;
 
 @Listeners(utilities.Listeners.class)
 public class US_0017 {
-    public WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(10));
-    UsersPage usersPage  = new UsersPage();
+    public WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+    UsersPage usersPage = new UsersPage();
     LoginPage loginPage = new LoginPage();
     WelcomePage welcomePage = new WelcomePage();
     ProfilePage profilePage = new ProfilePage();
 
     @BeforeClass
-    public void open(){
+    public void open() {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
     }
+
     @AfterClass
-    public void close(){ Driver.closeDriver();}
+    public void close() {
+        Driver.closeDriver();
+    }
+
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         welcomePage.loginButton.click();
-        if(Driver.getDriver().getCurrentUrl().equals("https://a3m-qa-gm3.quaspareparts.com/login")){
-            loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
+        if (Driver.getDriver().getCurrentUrl().equals("https://a3m-qa-gm3.quaspareparts.com/login")) {
+            loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));
             usersPage.userModule.click();
-        }
-        else {
+        } else {
             usersPage.userModule.click();
         }
     }
@@ -51,7 +54,7 @@ public class US_0017 {
     }
 
     //_________________________TC_01_______________________________
-    @Test(testName = "TC01" , description = "validate adding new user" , priority = 1)
+    @Test(testName = "TC01", description = "validate adding new user", priority = 1)
     public void addNewUesrTest() throws InterruptedException {
 
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
@@ -72,8 +75,8 @@ public class US_0017 {
 
 
     //_________________________TC_02_______________________________
-    @Test(testName = "TC02" , description = "validate email is required to add new user" , priority = 2)
-    public void emailIsRequiredTest(){
+    @Test(testName = "TC02", description = "validate email is required to add new user", priority = 2)
+    public void emailIsRequiredTest() {
 
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
@@ -84,16 +87,15 @@ public class US_0017 {
 
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
-        Assert.assertEquals(usersPage.requiredMessage.getText(),"Please enter a valid email");
+        Assert.assertEquals(usersPage.requiredMessage.getText(), "Please enter a valid email");
 
         usersPage.closeButton.click();
     }
 
 
-
     //_________________________TC_03_______________________________
-    @Test(testName = "TC03" , description = "validate role is required to add new user" , priority = 3)
-    public void roleIsRequiredTest(){
+    @Test(testName = "TC03", description = "validate role is required to add new user", priority = 3)
+    public void roleIsRequiredTest() {
 
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
@@ -104,7 +106,7 @@ public class US_0017 {
 
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
-        Assert.assertEquals(usersPage.requiredMessage.getText(),"Please select a role for the user you will add");
+        Assert.assertEquals(usersPage.requiredMessage.getText(), "Please select a role for the user you will add");
 
         usersPage.closeButton.click();
 
@@ -112,8 +114,8 @@ public class US_0017 {
 
 
     //_________________________TC_04_______________________________
-    @Test(testName = "TC04" , description = "validate email should contain '@'" , priority = 4)
-    public void emailIsInvalid01(){
+    @Test(testName = "TC04", description = "validate email should contain '@'", priority = 4)
+    public void emailIsInvalid01() {
 
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
@@ -125,7 +127,7 @@ public class US_0017 {
 
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
-        Assert.assertEquals(usersPage.requiredMessage.getText(),"Please enter a valid email");
+        Assert.assertEquals(usersPage.requiredMessage.getText(), "Please enter a valid email");
 
         usersPage.closeButton.click();
 
@@ -133,8 +135,8 @@ public class US_0017 {
 
 
     //_________________________TC_05_______________________________
-    @Test(testName = "TC05" , description = "validate email should contain '.com'" , priority = 5)
-    public void emailIsInvalid02(){
+    @Test(testName = "TC05", description = "validate email should contain '.com'", priority = 5)
+    public void emailIsInvalid02() {
 
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
@@ -146,7 +148,7 @@ public class US_0017 {
 
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
-        Assert.assertEquals(usersPage.requiredMessage.getText(),"Please enter a valid email");
+        Assert.assertEquals(usersPage.requiredMessage.getText(), "Please enter a valid email");
 
         usersPage.closeButton.click();
     }
