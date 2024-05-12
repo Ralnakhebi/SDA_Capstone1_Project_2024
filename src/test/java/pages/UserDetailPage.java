@@ -56,7 +56,7 @@ public class UserDetailPage {
         return updatedSuccessMessage;
     }
 
-    @FindBy (xpath = "//*[contains(text(),'User information updated successfully']")
+    @FindBy (xpath = "//div[@class='toast-body']")
     WebElement updatedSuccessMessage;
     @FindBy(xpath = "//button[contains(@class,'btn-transparent') and contains(@class, 'rounded border-0')]")
     public WebElement accountMenu;
@@ -114,9 +114,6 @@ public class UserDetailPage {
                 .findElement(By.xpath("//span[contains(text(),'Quality') and contains(text(),'Manager')]"));
         Assert.assertTrue(roleAdded.isDisplayed());
     }
-
-
-
 
 
     //This method suppose to be in UsersPage

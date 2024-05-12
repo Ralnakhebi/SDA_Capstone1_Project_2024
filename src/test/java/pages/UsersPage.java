@@ -1,12 +1,17 @@
 package pages;
 
+import org.apache.poi.ss.formula.functions.T;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utilities.Driver;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsersPage {
@@ -45,8 +50,8 @@ public class UsersPage {
     public WebElement removeButton;
     @FindBy(xpath = "//*[@class='text-danger']")
     public WebElement requiredMessage;
-    @FindBy(xpath = "//table[@class='table table-hover table-sm ReactDataTable']//tbody//td[3]")
-    public List<WebElement> usersList;
+    @FindBy(xpath = "//tbody[@class='tableRows']")
+    public WebElement usersList;
 
     public void toSelectDepartment(){
         wait.until(ExpectedConditions.elementToBeClickable(selectDepartment));
@@ -70,6 +75,28 @@ public class UsersPage {
         threeDotsButton.click();
         Thread.sleep(2000);
         removeButton.click();
+    }
+
+    public boolean toCheckTheUserAppearing(String userEmail){
+        boolean isDisplayed=false;
+        List<WebElement>rows = usersList.findElements(By.xpath(".//tr"));
+            for (WebElement w : rows) {
+                if(isDisplayed){
+                    break;
+                }
+                List<WebElement> cell = w.findElements(By.xpath(".//td"));
+                for (WebElement c : cell) {
+                    if (c.getText().contains(userEmail)) {
+                        isDisplayed = true;
+                        break;
+                    }
+                }
+            }
+        WebElement threeDotsButton=Driver.getDriver().
+                findElement(By.xpath("//button[contains(@class,'btn-transparent') and contains(@class,'p-0')]"));
+        threeDotsButton.click();
+        Driver.getDriver().findElement(By.xpath("//a[@class='dropdown-item' and contains(text(),'Remove')]")).click();
+        return isDisplayed;
     }
 
 }
