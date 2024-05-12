@@ -13,7 +13,7 @@ public class EditRemoteUnitPage {
     @FindBy(xpath = "//li[@id='link6']")
     public WebElement RemoteUnitsBut;
 
-    @FindBy(xpath = "//b[normalize-space()='US1204']")
+    @FindBy(xpath = "//*[@id=\"MainContent\"]/div/div[3]/div/div[1]/div/div/p/div[1]/div[2]/a")
    public WebElement selectedRemoteElement;
 
     @FindBy(xpath = "//button[normalize-space()='Edit Remote Unit']")
