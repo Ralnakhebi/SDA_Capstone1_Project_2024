@@ -7,11 +7,11 @@ import pages.WelcomePage;
 
 public class US_0002 extends US_0001 {
 
-
+    WelcomePage welcomePage = new WelcomePage();
     ProfilePage profilePage = new ProfilePage();
 
     //(dependsOnMethods = {"tests.Login.US_0001.testLoginWithValidCredentials"})
-    // Test 1 : Verify Logo Functionality displayd and click
+    // Test 1 : Verify Logo Functionality display and click
     @Test
     public void VerifyLogoFunctionality() throws InterruptedException {
 
@@ -21,8 +21,7 @@ public class US_0002 extends US_0001 {
         profilePage.logobutton.click();
 
         // click in login button in the WelcomePage
-        WelcomePage welcomePage1 = new WelcomePage();
-        welcomePage1.loginButton.click();
+        welcomePage.loginButton.click();
 
     }
 

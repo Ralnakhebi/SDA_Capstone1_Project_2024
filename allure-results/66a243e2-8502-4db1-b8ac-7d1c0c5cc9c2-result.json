@@ -1,0 +1,61 @@
+{
+  "uuid": "66a243e2-8502-4db1-b8ac-7d1c0c5cc9c2",
+  "historyId": "b68d210834f3d438adc18d63cf5e2b63",
+  "fullName": "tests.login.US_0003.dropdownmenu",
+  "labels": [
+    {
+      "name": "package",
+      "value": "tests.login.US_0003"
+    },
+    {
+      "name": "testClass",
+      "value": "tests.login.US_0003"
+    },
+    {
+      "name": "testMethod",
+      "value": "dropdownmenu"
+    },
+    {
+      "name": "parentSuite",
+      "value": "Default Suite"
+    },
+    {
+      "name": "suite",
+      "value": "SDA_Capstone1_Project"
+    },
+    {
+      "name": "subSuite",
+      "value": "tests.login.US_0003"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-TVVT5CH"
+    },
+    {
+      "name": "thread",
+      "value": "25648@DESKTOP-TVVT5CH.main(1)"
+    },
+    {
+      "name": "framework",
+      "value": "testng"
+    },
+    {
+      "name": "language",
+      "value": "java"
+    }
+  ],
+  "links": [],
+  "name": "dropdownmenu",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1715442226959,
+  "stop": 1715442227106
+}

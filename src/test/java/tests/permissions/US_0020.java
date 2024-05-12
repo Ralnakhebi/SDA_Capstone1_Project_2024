@@ -49,5 +49,4 @@ public class US_0020 {
         System.out.println("number Of Permissions = " + numOfPer);
         Assert.assertEquals(numOfPer, 94);
     }
-
 }

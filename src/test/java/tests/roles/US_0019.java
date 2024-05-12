@@ -7,8 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.RoleDetailPage;
-import pages.RolesPage;
+import pages.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 
@@ -16,13 +15,13 @@ import utilities.Driver;
 public class US_0019 {
     RolesPage rolesPage = new RolesPage();
     RoleDetailPage roleDetailPage = new RoleDetailPage();
+    WelcomePage welcomePage = new WelcomePage();
+    LoginPage loginPage = new LoginPage();
     @BeforeMethod
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
-        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
-        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+        welcomePage.loginButton.click();
+        loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
     }
     @AfterMethod
     public void tearDown(){
