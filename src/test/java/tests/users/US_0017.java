@@ -1,40 +1,58 @@
 package tests.users;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.LoginPage;
+import pages.ProfilePage;
 import pages.UsersPage;
+import pages.WelcomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 import java.time.Duration;
+import java.util.List;
 
 @Listeners(utilities.Listeners.class)
 public class US_0017 {
     public WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(10));
-    UsersPage usersPage = new UsersPage();
+    UsersPage usersPage  = new UsersPage();
+    LoginPage loginPage = new LoginPage();
+    WelcomePage welcomePage = new WelcomePage();
+    ProfilePage profilePage = new ProfilePage();
+
+    @BeforeClass
+    public void open(){ Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));}
+    @AfterClass
+    public void close(){ Driver.closeDriver();}
     @BeforeMethod
-    public void setUp() throws InterruptedException {
-        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
-        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
-        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
-    }
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
+    public void setUp(){
+        //Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        welcomePage.loginButton.click();
+        System.out.println("Driver.getDriver().getCurrentUrl() = " + Driver.getDriver().getCurrentUrl());
+        if(Driver.getDriver().getCurrentUrl().equals("https://a3m-qa-gm3.quaspareparts.com/login")){
+            loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
+            usersPage.userModule.click();
+        }
+        else {
+            usersPage.userModule.click();
+        }
     }
 
+    @AfterMethod
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(5000);
+        profilePage.usernameAndRole.click();
+        wait.until(ExpectedConditions.elementToBeClickable(profilePage.logoutButton));
+        profilePage.logoutButton.click();
+    }
 
     //_________________________TC_01_______________________________
     @Test(testName = "TC01" , description = "validate adding new user" , priority = 1)
     public void addNewUesrTest() throws InterruptedException {
-
-        usersPage.userModule.click();
 
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
@@ -57,7 +75,6 @@ public class US_0017 {
     @Test(testName = "TC02" , description = "validate email is required to add new user" , priority = 2)
     public void emailIsRequiredTest(){
 
-        usersPage.userModule.click();
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
 
@@ -68,6 +85,8 @@ public class US_0017 {
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
         Assert.assertEquals(usersPage.requiredMessage.getText(),"Please enter a valid email");
+
+        usersPage.closeButton.click();
     }
 
 
@@ -76,7 +95,6 @@ public class US_0017 {
     @Test(testName = "TC03" , description = "validate role is required to add new user" , priority = 3)
     public void roleIsRequiredTest(){
 
-        usersPage.userModule.click();
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
 
@@ -87,6 +105,9 @@ public class US_0017 {
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
         Assert.assertEquals(usersPage.requiredMessage.getText(),"Please select a role for the user you will add");
+
+        usersPage.closeButton.click();
+
     }
 
 
@@ -94,7 +115,6 @@ public class US_0017 {
     @Test(testName = "TC04" , description = "validate email should contain '@'" , priority = 4)
     public void emailIsInvalid01(){
 
-        usersPage.userModule.click();
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
 
@@ -106,6 +126,9 @@ public class US_0017 {
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
         Assert.assertEquals(usersPage.requiredMessage.getText(),"Please enter a valid email");
+
+        usersPage.closeButton.click();
+
     }
 
 
@@ -113,7 +136,6 @@ public class US_0017 {
     @Test(testName = "TC05" , description = "validate email should contain '.com'" , priority = 5)
     public void emailIsInvalid02(){
 
-        usersPage.userModule.click();
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
         usersPage.addNewUserButton.click();
 
@@ -125,5 +147,7 @@ public class US_0017 {
         wait.until(ExpectedConditions.visibilityOf(usersPage.requiredMessage));
         Assert.assertTrue(usersPage.requiredMessage.isDisplayed());
         Assert.assertEquals(usersPage.requiredMessage.getText(),"Please enter a valid email");
+
+        usersPage.closeButton.click();
     }
 }
