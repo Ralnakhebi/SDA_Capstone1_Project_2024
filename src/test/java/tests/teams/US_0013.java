@@ -3,53 +3,42 @@ package tests.teams;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 import pages.NewTeamPage;
 import pages.TeamsPage;
+import pages.WelcomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
+@Listeners(utilities.Listeners.class)
 public class US_0013 {
      NewTeamPage newTeam = new NewTeamPage();
      TeamsPage teamsPage = new TeamsPage();
-
-    @Test
+    WelcomePage welcomePage = new WelcomePage();
+    LoginPage loginPage = new LoginPage();
+    @Test(description = "This test checks the teams displayed correctly successfully in the Teams .")
     public void TC01() {
 
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//a[@class='login-button']")).click();
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys("bo@testevolve.com");
 
-        // Find the password input field and enter the password
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("41KNukonZapx6-S");
-        WebElement loginButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
-        loginButton.click();
-
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
 
         boolean isTeamDisplayed = newTeam.TeamBtu.isDisplayed();
         boolean isClickable = teamsPage.isTeamClickable();
 
         Assert.assertTrue(isTeamDisplayed, "Team element is not displayed");
         Assert.assertTrue(isClickable, "Team element is not clickable");
+        Driver.getDriver().close();
     }
-    @Test
-            public void TC02() {
-
+    @Test(description = "This test checks that can add a new team successfully in the Teams .")
+    public void TC02() {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//a[@class='login-button']")).click();
-//        Driver.getDriver().get(ConfigReader.getProperty("bo@testevolve.com"));
-//        Driver.getDriver().get(ConfigReader.getProperty("s5G1hKe6O6YMpPQ"));
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");;
 
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys("bo@testevolve.com");
-
-        // Find the password input field and enter the password
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("41KNukonZapx6-S");
-        WebElement loginButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
-        loginButton.click();
 
         newTeam.click_Team_But();
         // teamPage.TeamBtu.click();
@@ -64,7 +53,7 @@ public class US_0013 {
         // teamPage.DepartmentType.click();
         newTeam.clickDropdownDepartment();
         newTeam.Option();
-        newTeam.Description.sendKeys("New Teams.");
+        newTeam.Description.sendKeys("Our team is composed of dedicated professionals who bring diverse skills.");
 
         newTeam.choseTeamRoles();
         newTeam.productOwner();
@@ -72,22 +61,16 @@ public class US_0013 {
          newTeam.SaveBut.click();
 
         Assert.assertTrue(newTeam.SuccessMessage.isDisplayed());
+        Driver.getDriver().close();
 
     }
 
-    @Test
+    @Test(description = "This test checks that can add a new team successfully in the Teams without any data.")
     public void TC03() {
 
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//a[@class='login-button']")).click();
-        WebElement username = Driver.getDriver().findElement(By.id("username"));
-        username.sendKeys("bo@testevolve.com");
-
-        // Find the password input field and enter the password
-        WebElement password = Driver.getDriver().findElement(By.id("password"));
-        password.sendKeys("41KNukonZapx6-S");
-        WebElement loginButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
-        loginButton.click();
+        welcomePage.loginButton.click();
+        loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");;
 
         newTeam.click_Team_But();
 
@@ -98,9 +81,9 @@ public class US_0013 {
         String expectedText = "Please enter a name for department";
 
         Assert.assertTrue(pageSource.contains(expectedText),"Text not found in page source");
+        Driver.getDriver().close();
 
     }
-
 
     }
 
