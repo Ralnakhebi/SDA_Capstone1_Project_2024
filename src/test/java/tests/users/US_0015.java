@@ -32,9 +32,14 @@ public class US_0015 {
 
     @Test(description = "To confirm the new user email")
     public void TC02(){
+        //
 
     }
 
+    /**
+     *
+     * @param email
+     */
     public void addUserByEmail(String email){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));

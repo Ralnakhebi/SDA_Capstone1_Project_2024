@@ -100,7 +100,12 @@ public class UserDetailPage {
         saveButton.click();
     }
 
+    @FindBy(xpath = "//button[contains(@class,'btn-transparent') and contains(@class,'p-0')]")
+    WebElement threeDots;
+    @FindBy(xpath = "//a[contains(@class,'dropdown-item') and contains(@class,'cursor-pointer')]")
+    WebElement removeRole;
     public void addNewRole(){
+        //Add new Role Quality Manager
         addNewRoleButton.click();
         try {
             Thread.sleep(1000);
@@ -112,7 +117,12 @@ public class UserDetailPage {
         saveRoleButton.click();
         WebElement roleAdded = Driver.getDriver()
                 .findElement(By.xpath("//span[contains(text(),'Quality') and contains(text(),'Manager')]"));
+        //Verify the role is displayed on the user details page
         Assert.assertTrue(roleAdded.isDisplayed());
+
+        //Delete the added Role
+        threeDots.click();
+        removeRole.click();
     }
 
 
