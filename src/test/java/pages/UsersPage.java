@@ -80,23 +80,25 @@ public class UsersPage {
     public boolean toCheckTheUserAppearing(String userEmail){
         boolean isDisplayed=false;
         List<WebElement>rows = usersList.findElements(By.xpath(".//tr"));
-        for (WebElement w : rows) {
-            if(isDisplayed){
-                break;
-            }
-            List<WebElement> cell = w.findElements(By.xpath(".//td"));
-            for (WebElement c : cell) {
-                if (c.getText().contains(userEmail)) {
-                    isDisplayed = true;
+
+            for (WebElement w : rows) {
+                if(isDisplayed){
                     break;
                 }
+                List<WebElement> cell = w.findElements(By.xpath(".//td"));
+                for (WebElement c : cell) {
+                    if (c.getText().contains(userEmail)) {
+                        isDisplayed = true;
+                        break;
+                    }
+                }
             }
-        }
         WebElement threeDotsButton=Driver.getDriver().
                 findElement(By.xpath("//button[contains(@class,'btn-transparent') and contains(@class,'p-0')]"));
         threeDotsButton.click();
         Driver.getDriver().findElement(By.xpath("//a[@class='dropdown-item' and contains(text(),'Remove')]")).click();
         return isDisplayed;
     }
+
 
 }

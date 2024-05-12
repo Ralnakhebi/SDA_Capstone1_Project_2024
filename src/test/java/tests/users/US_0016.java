@@ -32,6 +32,7 @@ public class US_0016 {
     public void TC02(){
         //The Email field Tage name is not input, therefor user cannot type on it,
         //we can check if the tage name is label then it not editable
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
         usersPage.userModule.click();
@@ -45,7 +46,7 @@ public class US_0016 {
 
     @Test(description = "To verify that the username cannot be empty while editing the user Information on the User Detail page")
     public void TC03() {
-
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
         usersPage.userModule.click();
@@ -59,12 +60,12 @@ public class US_0016 {
         //userDetailPage.getUsernameField().clear(); is not recommended because the website not tracking that the field is now empty
         //So I try a human behavior select all and backspace button in the keyboard
         userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),Keys.BACK_SPACE);
-        //((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].value = 'isItWork';",userDetailPage.getUsernameField());
         Assert.assertTrue(userDetailPage.getErrorMessage().isDisplayed());
     }
 
     @Test(description = "To verify that the username accepts any username except the empty field while editing the user information ")
     public void TC04(){
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         loginPage.login("bo@testevolve.com", "41KNukonZapx6-S");
         usersPage.userModule.click();
@@ -78,18 +79,11 @@ public class US_0016 {
         userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),"jemel55942@losvtn.com");
         userDetailPage.clickOnSaveButton();
 
-//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
-//        wait.until(ExpectedConditions.visibilityOf(userDetailPage.getUpdatedSuccessMessage()));
-//        try {
-//            Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-        //((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].value = 'isItWork';",userDetailPage.getUsernameField());
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(userDetailPage.getUpdatedSuccessMessage()));
 
         String messageText = String.valueOf(((JavascriptExecutor) Driver.getDriver()).executeScript("return arguments[0].innerHTML", userDetailPage.getUpdatedSuccessMessage()));
         System.out.println("messageText = " + messageText);
-        //I can't locate the success message
         Assert.assertTrue(messageText.contains("User information updated successfully"));
         Assert.assertTrue(userDetailPage.getUpdatedSuccessMessage().isDisplayed());
 
@@ -121,6 +115,7 @@ public class US_0016 {
         usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='jemel55942@losvtn.com']")).click();
         userDetailPage.addNewRole();
+
 
     }
 
