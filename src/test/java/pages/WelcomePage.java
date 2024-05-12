@@ -7,10 +7,10 @@ import utilities.Driver;
 
 public class WelcomePage {
 
-
     public WelcomePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
 
     // xpath for login button in Welcome Page
     @FindBy(xpath = "//*[text()='Login']")
