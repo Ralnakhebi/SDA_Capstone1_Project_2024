@@ -1,0 +1,1 @@
+{"uuid":"bd1ba318-83b7-4bfc-8d9a-4f2590222c3f","name":"tests.memberships.US_0005.setUp","children":["90d48e68-031b-495e-b5f2-3e7f5e51fd71"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1715500434732,"stop":1715500444937}],"afters":[],"start":1715500434732,"stop":1715500444937}
