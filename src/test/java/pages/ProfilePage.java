@@ -53,6 +53,17 @@ public class ProfilePage {
     @FindBy(xpath = "//*[@alt='Collapse']")
     public WebElement collapse;
 
+    ////////////////////////////////////////////////
+
+    //Departments tap/icon
+    @FindBy(xpath = "//a[@href='#/departments/department']")
+    public WebElement departmentTap;
+
+    ////////////////////////////////////////////////
+    //Permissions tap/icon
+    @FindBy(id = "link10")
+    public WebElement PermissionsButton;
+
 
 }
 
