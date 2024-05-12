@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import utilities.ConfigReader;
 import utilities.Driver;
 
 public class LoginPage {
@@ -57,7 +57,6 @@ public class LoginPage {
         lg.passwordField.sendKeys(ConfigReader.getProperty("password2"));
         lg.SigninButton.click();
     }
-}
 
     public void login(String Username, String password) {
         usernameField.sendKeys(Username);
