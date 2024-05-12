@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/abdul/IdeaProjects/SDA_Capstone1_Project_2024">
+        <classes>
+            <class name="tests.login.US_0001">
+                <methods>
+                    <include name="testLoginWithInvalidEmailFormat"/>
+                    <include name="testLoginWithInvalidEmailFormat1"/>
+                    <include name="testLoginWithValidEmailAndInvalidPassword"/>
+                    <include name="testLoginWithEmptyUsernameAndPassword"/>
+                    <include name="testLoginWithValidCredentials"/>
+                </methods>
+            </class>
+            <class name="tests.login.US_0002">
+                <methods>
+                    <include name="VerifyLogoFunctionality"/>
+                    <include name="Sidebarcollapse"/>
+                    <include name="SidebarExpand"/>
+                </methods>
+            </class>
+            <class name="tests.login.US_0003">
+                <methods>
+                    <include name="dropdownmenu"/>
+                    <include name="MySubscriptions"/>
+                    <include name="MyMemberships"/>
+                    <include name="logoutButton"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
