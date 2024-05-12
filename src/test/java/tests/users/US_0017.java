@@ -25,14 +25,14 @@ public class US_0017 {
     ProfilePage profilePage = new ProfilePage();
 
     @BeforeClass
-    public void open(){ Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));}
+    public void open(){
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+    }
     @AfterClass
     public void close(){ Driver.closeDriver();}
     @BeforeMethod
     public void setUp(){
-        //Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
-        System.out.println("Driver.getDriver().getCurrentUrl() = " + Driver.getDriver().getCurrentUrl());
         if(Driver.getDriver().getCurrentUrl().equals("https://a3m-qa-gm3.quaspareparts.com/login")){
             loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
             usersPage.userModule.click();
