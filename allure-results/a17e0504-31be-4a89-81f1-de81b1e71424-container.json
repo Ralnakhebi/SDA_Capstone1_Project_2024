@@ -1,1 +1,0 @@
-{"uuid":"a17e0504-31be-4a89-81f1-de81b1e71424","name":"tests.roles.US_0018.tearDown","children":["22bb7f16-c95d-472a-908b-e460ef9676da"],"description":"","befores":[],"afters":[{"name":"tearDown","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1715502712024,"stop":1715502712175}],"start":1715502712024,"stop":1715502712175}
