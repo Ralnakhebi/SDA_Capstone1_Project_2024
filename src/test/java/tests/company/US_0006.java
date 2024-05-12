@@ -65,7 +65,6 @@ public class US_0006{
                 "Saudi riyal");
 }
 
-
     //-------------------------TC_03------------------------------------
     @Test(description = "Edit Company Information Without Writing E-Mail")
     public void companyTest03(){

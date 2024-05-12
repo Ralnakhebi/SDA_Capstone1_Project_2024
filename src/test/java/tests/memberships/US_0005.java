@@ -42,8 +42,8 @@ public class US_0005 {
     @Test(testName = "TC02", description = "Display 'My Memberships' page")
     public void membershipTest02() throws InterruptedException {
 
-      myMembershipsPage = new MyMembershipsPage();
-      myMembershipsPage.displayMembershipSocTC();
+    myMembershipsPage = new MyMembershipsPage();
+    myMembershipsPage.displayMembershipSocTC();
 
         }
     }
