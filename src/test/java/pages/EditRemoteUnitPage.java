@@ -13,7 +13,7 @@ public class EditRemoteUnitPage {
     @FindBy(xpath = "//li[@id='link6']")
     public WebElement RemoteUnitsBut;
 
-    @FindBy(xpath = "//a[@href='#/department/1715291772802536/1101']")
+    @FindBy(xpath = "//b[normalize-space()='US1204']")
    public WebElement selectedRemoteElement;
 
     @FindBy(xpath = "//button[normalize-space()='Edit Remote Unit']")
@@ -39,6 +39,10 @@ public class EditRemoteUnitPage {
 
     @FindBy(xpath = "//button[normalize-space()='Confirm']")
     public WebElement ConfirmDelete;
+    @FindBy(xpath = "//div[@class='toaster toast-container p-3 position-fixed top-0 end-0']")
+    public WebElement SuccessMessage;
+    @FindBy(xpath = "//span[@class='text-danger']")
+    public WebElement FiledMessage;
 
 
 }

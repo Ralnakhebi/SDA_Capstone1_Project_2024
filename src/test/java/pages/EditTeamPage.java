@@ -31,8 +31,6 @@ public class EditTeamPage {
 
   public WebElement EditDepartmentType;
 
-
-
     @FindBy(xpath = "//span[@class='text-danger']")
     public WebElement FiledMessage;
 
