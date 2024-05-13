@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/norah/IdeaProjects/SDA_Capstone1_Project_2024_2/src/test/java/tests">
+        <classes>
+
+            <class name="tests.users.US_0017">
+                <methods>
+                    <include name="addNewUesrTest"/>
+                    <include name="emailIsRequiredTest"/>
+                    <include name="roleIsRequiredTest"/>
+                    <include name="emailIsInvalid01"/>
+                    <include name="emailIsInvalid02"/>
+                </methods>
+            </class>
+
+            <class name="tests.roles.US_0018">
+                <methods>
+                    <include name="rolesListedTest"/>
+                </methods>
+            </class>
+
+            <class name="tests.roles.US_0019">
+                <methods>
+                    <include name="rolesAndPermissionsTest"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>
