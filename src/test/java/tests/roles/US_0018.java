@@ -14,21 +14,19 @@ import utilities.ConfigReader;
 import utilities.Driver;
 @Listeners(utilities.Listeners.class)
 public class US_0018 {
-    RolesPage rolesPage = new RolesPage();
-    WelcomePage welcomePage = new WelcomePage();
-    LoginPage loginPage = new LoginPage();
-    @BeforeMethod
-    public void setUp() {
-        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        welcomePage.loginButton.click();
-        loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
-    }
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
-    }
+
     @Test(testName = "TC01")
     public void rolesListedTest(){
+        RolesPage rolesPage = new RolesPage();
+        WelcomePage welcomePage = new WelcomePage();
+        LoginPage loginPage = new LoginPage();
+
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        welcomePage.loginButton.click();
+
+        if (Driver.getDriver().getCurrentUrl().equals("https://a3m-qa-gm3.quaspareparts.com/login")) {
+            loginPage.login(ConfigReader.getProperty("username"), ConfigReader.getProperty("password"));}
+
         rolesPage.rolesModule.click();
 
         for(WebElement role : rolesPage.rolesList){
@@ -36,5 +34,6 @@ public class US_0018 {
             Assert.assertTrue(role.isDisplayed());
         }
         Assert.assertEquals(rolesPage.rolesList.size(),16);
+        Driver.closeDriver();
     }
 }

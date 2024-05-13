@@ -30,9 +30,7 @@ public class US_0017 {
     }
 
     @AfterClass
-    public void close() {
-        Driver.closeDriver();
-    }
+    public void close() {Driver.closeDriver();}
 
     @BeforeMethod
     public void setUp() {
