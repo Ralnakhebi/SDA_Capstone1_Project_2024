@@ -6,10 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.UserDetailPage;
-import pages.WelcomePage;
 import pages.UsersPage;
-import utilities.ConfigReader;
 import utilities.Driver;
 
 import java.time.Duration;
