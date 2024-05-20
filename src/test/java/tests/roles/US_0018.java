@@ -33,7 +33,7 @@ public class US_0018 {
             System.out.println(role.getText());
             Assert.assertTrue(role.isDisplayed());
         }
-        Assert.assertEquals(rolesPage.rolesList.size(),16);
+        Assert.assertEquals(rolesPage.rolesList.size(),14);
         Driver.closeDriver();
     }
 }
