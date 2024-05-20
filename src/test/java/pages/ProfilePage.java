@@ -1,5 +1,13 @@
 package pages;
 
+import com.sun.source.tree.AssertTree;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import utilities.Driver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -28,6 +36,7 @@ public class ProfilePage {
     @FindBy(xpath = "//button[@tabindex='0']")
     public WebElement drobManueButton;
 
+
     // xpath for the username and role in dropdown manue
     @FindBy(xpath = "//*[@class='fw-bold'] [1]")
     public WebElement usernameAndRole;
@@ -37,22 +46,100 @@ public class ProfilePage {
     public WebElement MySubscriptionsbutton;
 
 
-    // xpath for the My Memberships button in dropdown button
+
+
     @FindBy(xpath = "//*[text()='My Memberships']")
     public WebElement MyMembershipsbutton;
 
 
-    // xpath for the logout button in the dropdown manue
+  
+
     @FindBy(xpath = "//*[text()='Logout']")
     public WebElement logoutButton;
 
     //[dropdown manue End]
 /////////////////////////////////////////////////////////////////////////////////////
+    @FindBy(id = "changePasswordButton")
+    public WebElement changepassword;
+
+    @FindBy(id = "newPassword")
+    public WebElement newPassword1;
+
+    @FindBy(id = "newPassword2")
+    public WebElement newPassword2;
+
+    @FindBy(xpath = "//button[@class='btn btn-dark text-white me-2']")
+    public WebElement confirmButton;
+
+    @FindBy(xpath = "//button[@class='btn btn-danger text-white me-2']")
+    public WebElement cancelButton;
+
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible fade show mt-1']")
+    public WebElement textmessagepassword;
+
+
+
+
+    @FindBy(xpath = "//*[@class='text-danger']")
+    public WebElement textmessageusername;
+
+    @FindBy(xpath = "//*[@class='toast-body']")
+    public WebElement successmessageusername;
+
+    @FindBy(xpath = "//button[@class='btn btn-ghost-dark rounded-circle']")
+    public WebElement editbutton;
+
+    @FindBy(id ="username")
+    public WebElement editeusername;
+
+    @FindBy(xpath = "//*[@class='icon']")
+    public WebElement rightbutton;
+
+    @FindBy(xpath = "//button[@class='btn btn-ghost-danger rounded-circle']")
+    public WebElement closebutton;
+
+
+    public void Changepassword (String password1, String password2){
+
+        newPassword1.clear();
+        newPassword1.click();
+        newPassword1.sendKeys(password1);
+        newPassword2.click();
+        newPassword2.clear();
+        newPassword2.sendKeys(password2);
+        confirmButton.click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void Changeusername(String username){
+        editbutton.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        editeusername.clear();
+        editeusername.sendKeys(username);
+    }
 
     // xpath for collapse Arrow Button
     @FindBy(xpath = "//*[@alt='Collapse']")
     public WebElement collapse;
 
+    ////////////////////////////////////////////////
+
+    //Departments tap/icon
+    @FindBy(xpath = "//a[@href='#/departments/department']")
+    public WebElement departmentTap;
+
+    ////////////////////////////////////////////////
+    //Permissions tap/icon
+    @FindBy(id = "link10")
+    public WebElement PermissionsButton;
+
 
 }
-

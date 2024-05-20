@@ -19,14 +19,11 @@ public class RemoteUnitPage {
 
 
 
-
-
     public void clickOnRemoteunit() {
         clickRemoteUnitPage.click();
     }
     public void clickOnRemoteunitbody() {
         RemoteunitBody.isDisplayed();
     }
-
 
 }
