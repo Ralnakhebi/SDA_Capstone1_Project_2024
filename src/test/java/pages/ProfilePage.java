@@ -71,14 +71,20 @@ public class ProfilePage {
     @FindBy(xpath = "//button[@class='btn btn-dark text-white me-2']")
     public WebElement confirmButton;
 
-    @FindBy(xpath = "//div[@class='btn btn-danger text-white me-2']")
+    @FindBy(xpath = "//button[@class='btn btn-danger text-white me-2']")
     public WebElement cancelButton;
 
     @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible fade show mt-1']")
     public WebElement textmessagepassword;
 
-    @FindBy(xpath = "//*[@id=MainContent]/div[1]/div/div[2]/div[2]/div[1]/div[1]/span")
+
+
+
+    @FindBy(xpath = "//*[@class='text-danger']")
     public WebElement textmessageusername;
+
+    @FindBy(xpath = "//*[@class='toast-body']")
+    public WebElement successmessageusername;
 
     @FindBy(xpath = "//button[@class='btn btn-ghost-dark rounded-circle']")
     public WebElement editbutton;
@@ -88,9 +94,13 @@ public class ProfilePage {
 
     @FindBy(xpath = "//*[@class='icon']")
     public WebElement rightbutton;
-    @FindBy(xpath = "//*[@id=MainContent]/div[1]/div/div[2]/div[2]/div[1]/div[2]/label[1]")
-    public WebElement Email;
+
+    @FindBy(xpath = "//button[@class='btn btn-ghost-danger rounded-circle']")
+    public WebElement closebutton;
+
+
     public void Changepassword (String password1, String password2){
+
         newPassword1.clear();
         newPassword1.click();
         newPassword1.sendKeys(password1);
@@ -108,23 +118,12 @@ public class ProfilePage {
     public void Changeusername(String username){
         editbutton.click();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
         editeusername.clear();
         editeusername.sendKeys(username);
-        //Keys.chord(Keys.CONTROL,"a"),Keys.BACK_SPACE
-        rightbutton.click();
-
-       // Thread.sleep(1000);
-    }
-    public void Changeemail(String email){
-        editbutton.click();
-        Email.click();
-
-        //Assert.assertTrue();
-
     }
 
     // xpath for collapse Arrow Button
@@ -144,4 +143,3 @@ public class ProfilePage {
 
 
 }
-
