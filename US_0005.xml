@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/safanh/IdeaProjects/SDA_CapstoneTeam1_Project_2024/src/test/java/tests/memberships">
+        <classes>
+            <class name="tests.memberships.US_0005">
+                <methods>
+                    <include name="membershipTest01"/>
+                    <include name="membershipTest02"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
