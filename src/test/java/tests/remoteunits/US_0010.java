@@ -15,18 +15,18 @@ import utilities.Driver;
 @Listeners(utilities.Listeners.class)
 public class US_0010 {
 
-    @BeforeMethod
-    public void setUp() throws InterruptedException {
-        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
-        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
-        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
-    }
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
-    }
+//    @BeforeMethod
+//    public void setUp() throws InterruptedException {
+//        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+//        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
+//        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
+//        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+//        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+//    }
+//    @AfterMethod
+//    public void tearDown(){
+//        Driver.closeDriver();
+//    }
 
     @Test
     public void US_010_TC01() {
@@ -34,20 +34,20 @@ public class US_0010 {
         // Test is pass
         //_*_*_*_*_*_*_*_*_*_*_*_*Start_of_TC01_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 
-
+// log in
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
+        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
+        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+        //*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
         RemoteUnit remoteUnitPage = new RemoteUnit();
-
         remoteUnitPage.clickOnRemoteunit();
-
         remoteUnitPage.clickOnRemoteunitbody();
         // Assertion
-
         Assert.assertTrue(remoteUnitPage.RemoteunitBody.isDisplayed());
-
-
-
-
-        //_*_*_*_*_*_*_*_*_*_*_*_*End_of_TC01_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
+        //_*_*_*_*_*_*_*_*__*_*_*End_of_TC01_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
+        Driver.closeDriver();
 
 
     }

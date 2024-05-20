@@ -1,0 +1,1 @@
+{"uuid":"609038cf-3cec-4287-a248-773a573d517b","name":"tests.departments.US_009.setUp","children":["951bca41-6db0-4b1c-9e45-c1a2fd4703ba"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1716187622310,"stop":1716187650337}],"afters":[],"start":1716187622309,"stop":1716187650338}

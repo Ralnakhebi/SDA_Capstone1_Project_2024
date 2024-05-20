@@ -20,24 +20,33 @@ import static java.lang.Thread.sleep;
 
 public class US_0011 {
 
-    @BeforeMethod
-    public void setUp() throws InterruptedException {
-        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
-        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
-        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
-        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
-    }
-    @AfterMethod
-    public void tearDown(){
-        Driver.closeDriver();
-    }
+//    @BeforeMethod
+//    public void setUp() throws InterruptedException {
+//        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+//        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
+//        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
+//        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+//        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+//    }
+//    @AfterMethod
+//    public void tearDown(){
+//        Driver.closeDriver();
+//    }
 
     @Test
     public void testTC_01() throws InterruptedException {
 
         //Test pass
         //_*_*_*_*_*_*_*_*_*_*_*_*Start_of_TC01_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
+
+        //Login
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
+        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
+        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+
+
 
         NewRemoteUnitPage remoteUnit = new NewRemoteUnitPage();
         remoteUnit.clickOnRemoteunit();
@@ -62,6 +71,7 @@ public class US_0011 {
         remoteUnit.Savebutton.click();
         sleep(2000);
         Assert.assertTrue(remoteUnit.RemoteNameError.isDisplayed(), "Please enter a name for department.");
+        Driver.closeDriver();
 
 
     }
@@ -74,6 +84,13 @@ public class US_0011 {
         // Test is passed
         //_*_*_*_*_*_*_*_*_*_*_*_*Start_of_TC02_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 
+        //Login
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
+        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
+        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+//*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
         NewRemoteUnitPage remoteUnit = new NewRemoteUnitPage();
 
         remoteUnit.clickOnRemoteunit();
@@ -91,6 +108,7 @@ public class US_0011 {
         remoteUnit.Savebutton.click();
         sleep(2000);
         Assert.assertTrue(remoteUnit.RemoteTypeError.isDisplayed(), "Please select a type for department.");
+        Driver.closeDriver();
 
         //_*_*_*_*_*_*_*_*_*_*_*_*End_of_TC02_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 
@@ -102,6 +120,14 @@ public class US_0011 {
 
         // Test is passed
         //_*_*_*_*_*_*_*_*_*_*_*_*Start_of_TC03_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
+
+        //Login
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        Driver.getDriver().findElement(By.xpath("//*[text()='Login']")).click();
+        Driver.getDriver().findElement(By.id("username")).sendKeys(ConfigReader.getProperty("username"));
+        Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigReader.getProperty("password"));
+        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+//*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*
 
         NewRemoteUnitPage remoteUnit = new NewRemoteUnitPage();
 
@@ -131,6 +157,7 @@ public class US_0011 {
         remoteUnit.Savebutton.click();
         sleep(2000);
 
+        Driver.closeDriver();
 
         //_*_*_*_*_*_*_*_*_*_*_*_*End_of_TC03_*_*_*_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
 
