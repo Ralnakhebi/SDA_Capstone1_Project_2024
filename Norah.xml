@@ -23,7 +23,8 @@
 
             <class name="tests.roles.US_0019">
                 <methods>
-                    <include name="rolesAndPermissionsTest"/>
+                    <include name="rolesTest"/>
+                    <include name="permissionsListedTest"/>
                 </methods>
             </class>
 
