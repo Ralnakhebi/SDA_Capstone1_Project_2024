@@ -1,0 +1,1 @@
+{"uuid":"5f30ba45-fcea-4fd4-99a6-37e6b3099611","name":"tests.remoteunits.US_0011.setUp","children":["e178e844-6e6f-4032-9d25-5d881c71d79a"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1716187532958,"stop":1716187545928}],"afters":[],"start":1716187532957,"stop":1716187545929}

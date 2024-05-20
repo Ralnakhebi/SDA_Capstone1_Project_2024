@@ -32,6 +32,11 @@ public class EditDepartment {
 
     public WebElement clikonUS_0009dep;
 
+    @FindBy(xpath = "//*[text()='US_0009TC1']")
+
+    public WebElement clikonUS_0009TC1;
+
+
 
     @FindBy(xpath = "//*[contains(text(),'Edit')]")
     public WebElement clickOnEditebuttn;

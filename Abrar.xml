@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+
+          name="C:/Users/aaa92/IdeaProjects/SDA_Capstone1_Project_2024_A/src/test/java/tests">
+        <classes>
+
+            <class name="tests.departments.US_009">
+                <methods>
+<!--                    <include name="test_TC_003"/>-->
+<!--                    <include name="test_TC_004"/>-->
+<!--                    <include name="test_TC_001"/>-->
+<!--                    <include name="test_TC_002"/>-->
+                    <include name="test_TC_001"/>
+                    <include name="test_TC_002"/>
+                    <include name="test_TC_003"/>
+                    <include name="test_TC_004"/>
+                </methods>
+            </class>
+            <class name="tests.remoteunits.US_0010">
+                <methods>
+                    <include name="US_010_TC01"/>
+                </methods>
+            </class>
+
+            <class name="tests.remoteunits.US_0011">
+
+                <methods>
+                    <include name="testTC_01"/>
+                    <include name="testTC_02"/>
+                    <include name="testTC_03"/>
+
+                </methods>
+            </class>
+
+
+        </classes>
+    </test>
+</suite>
