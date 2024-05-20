@@ -53,8 +53,8 @@ public class LoginPage {
         welcomePage.loginButton.click();
 
         LoginPage lg = new LoginPage();
-        lg.usernameField.sendKeys(ConfigReader.getProperty("username2"));
-        lg.passwordField.sendKeys(ConfigReader.getProperty("password2"));
+        lg.usernameField.sendKeys(ConfigReader.getProperty("username"));
+        lg.passwordField.sendKeys(ConfigReader.getProperty("password"));
         lg.SigninButton.click();
     }
 
