@@ -1,5 +1,6 @@
 package tests.teams;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -22,13 +23,21 @@ public class US_0013 {
     @BeforeMethod
     public void setUp() throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        loginPage = new LoginPage();
+        teamsPage = new TeamsPage();
+        newTeam = new NewTeamPage();
+        welcomePage = new WelcomePage();
         welcomePage.loginButton.click();
-        loginPage.login("bo@testevolve.com", "FarahAl_huz@1234");;
+        loginPage.login("sda2024@gmail.com", "2JDTWt4UWdjGcNv");;
     }
+
     @AfterMethod
     public void tearDown(){
         Driver.closeDriver();
+       // Driver.getDriver().close();
     }
+
+
     @Test(description = "This test checks the teams displayed correctly successfully in the Teams .")
     public void TC01() {
 
@@ -63,8 +72,6 @@ public class US_0013 {
          newTeam.SaveBut.click();
 
         Assert.assertTrue(newTeam.SuccessMessage.isDisplayed());
-
-
     }
 
     @Test(description = "This test checks that can add a new team successfully in the Teams without any data.")
@@ -79,7 +86,6 @@ public class US_0013 {
         String expectedText = "Please enter a name for department";
 
         Assert.assertTrue(pageSource.contains(expectedText),"Text not found in page source");
-
 
     }
 

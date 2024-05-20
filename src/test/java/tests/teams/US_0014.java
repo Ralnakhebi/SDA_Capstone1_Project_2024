@@ -21,8 +21,14 @@ public class US_0014 {
     @BeforeMethod
     public void setUp() throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        detailPage = new TeamDetailPage();
+        loginPage = new LoginPage();
+        teamsPage = new TeamsPage();
+        newTeam = new NewTeamPage();
+        welcomePage = new WelcomePage();
+        editTeam = new EditTeamPage();
         welcomePage.loginButton.click();
-        loginPage.login("bo@testevolve.com", "FarahAl_huz@1234");;
+        loginPage.login("sda2024@gmail.com", "2JDTWt4UWdjGcNv");
     }
     @AfterMethod
     public void tearDown(){
@@ -45,7 +51,9 @@ public class US_0014 {
 
         editTeam.EditDepartmentType.sendKeys((Keys.CONTROL + "a"));
 
-        editTeam.EditDepartmentType.sendKeys(Keys.DELETE); //Edit the Department type only
+        editTeam.EditDepartmentType.sendKeys(Keys.DELETE);
+        //Edit the Department type only
+        Thread.sleep(2000);
         newTeam.SaveBut.click();
         Assert.assertTrue(editTeam.FiledMessage.isDisplayed());
 
@@ -64,7 +72,7 @@ public class US_0014 {
 
         Driver.getDriver().navigate().refresh();
 
-        Thread.sleep(4000);
+        Thread.sleep(2000);
 
         editTeam.EditTeamName.sendKeys((Keys.CONTROL + "a")); //Edit the Department Name only.
         editTeam.EditTeamName.sendKeys(Keys.DELETE);
@@ -86,19 +94,19 @@ public class US_0014 {
         detailPage.EditTeamButton.click();
 
         Driver.getDriver().navigate().refresh();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         editTeam.EditTeamName.sendKeys((Keys.CONTROL + "a"));
         editTeam.EditTeamName.sendKeys(Keys.DELETE);
         editTeam.EditTeamName.sendKeys("NewOne");
 
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         editTeam.EditDepartmentType.sendKeys((Keys.CONTROL + "a"));
         editTeam.EditDepartmentType.sendKeys(Keys.DELETE);
         editTeam.EditDepartmentType.sendKeys("Remote Unit");
         editTeam.EditDepartmentType.sendKeys(Keys.ENTER);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         newTeam.SaveBut.click();
         Assert.assertTrue(newTeam.SuccessMessage.isDisplayed());

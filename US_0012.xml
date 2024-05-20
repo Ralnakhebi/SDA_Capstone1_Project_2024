@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/mr-sh/IdeaProjects/SDA_Capstone1_Project/src/test/java/tests/remoteunits/US_0012.java">
+        <classes>
+            <class name="tests.remoteunits.US_0012">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                    <include name="TC03"/>
+                    <include name="TC04"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

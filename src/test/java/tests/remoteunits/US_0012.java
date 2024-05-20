@@ -6,9 +6,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.EditRemoteUnitPage;
-import pages.LoginPage;
-import pages.WelcomePage;
+import pages.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 @Listeners(utilities.Listeners.class)
@@ -20,8 +18,11 @@ public class US_0012 {
     @BeforeMethod
     public void setUp() throws InterruptedException {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        editRemoteUnitPage = new EditRemoteUnitPage();
+        loginPage = new LoginPage();
+        welcomePage = new WelcomePage();
         welcomePage.loginButton.click();
-        loginPage.login("bo@testevolve.com", "FarahAl_huz@1234");;
+        loginPage.login("sda2024@gmail.com", "2JDTWt4UWdjGcNv");;
     }
     @AfterMethod
     public void tearDown(){
