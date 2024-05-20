@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import utilities.Driver;
 
-import java.security.cert.X509Certificate;
-
 public class UserDetailPage {
 
     public UserDetailPage() {
@@ -32,7 +30,7 @@ public class UserDetailPage {
     WebElement addNewRoleButton;
     @FindBy(xpath = "//div[contains(@class,'css-13cymwt-control')]")
     WebElement dropDownRoles;
-    @FindBy(xpath = "//div[starts-with(text(),'Quality') and contains(text(),'Manager')]")
+    @FindBy(xpath = "//div[starts-with(text(),'Store') and contains(text(),'Manager')]")
     WebElement storeQualityRoleButton;
     @FindBy(xpath = "//button[contains(@class,'text-white')]")
     WebElement saveRoleButton;
@@ -100,12 +98,14 @@ public class UserDetailPage {
         saveButton.click();
     }
 
-    @FindBy(xpath = "//button[contains(@class,'btn-transparent') and contains(@class,'p-0')]")
+    @FindBy(xpath = "//button[@class='btn btn-transparent p-0']//*[name()='svg']")
     WebElement threeDots;
-    @FindBy(xpath = "//a[contains(@class,'dropdown-item') and contains(@class,'cursor-pointer')]")
+    @FindBy(xpath = "//a[normalize-space()='Remove Role']")
     WebElement removeRole;
+    @FindBy(xpath = "//button[normalize-space()='Confirm']")
+    WebElement confirmRemove;
     public void addNewRole(){
-        //Add new Role Quality Manager
+        //Add new Role Store Manager
         addNewRoleButton.click();
         try {
             Thread.sleep(1000);
@@ -116,28 +116,14 @@ public class UserDetailPage {
         storeQualityRoleButton.click();
         saveRoleButton.click();
         WebElement roleAdded = Driver.getDriver()
-                .findElement(By.xpath("//span[contains(text(),'Quality') and contains(text(),'Manager')]"));
+                .findElement(By.xpath("//span[contains(text(),'Store') and contains(text(),'Manager')]"));
         //Verify the role is displayed on the user details page
         Assert.assertTrue(roleAdded.isDisplayed());
 
         //Delete the added Role
         threeDots.click();
         removeRole.click();
-    }
-
-
-    //This method suppose to be in UsersPage
-    public void getFakeEmail(){
-        String mainWindowHandle = Driver.getDriver().getWindowHandle();
-        Driver.getDriver().get("https://temp-mail.org/en");
-        String fakeEmailWindowHandle = Driver.getDriver().getWindowHandle();
-        WebElement copyButton=Driver.getDriver().findElement(By.id("click-to-copy"));
-        copyButton.click();
-        Driver.getDriver().switchTo().window(mainWindowHandle);
-        //Then create a new member with that email
-
-    }
-    public void verifyFakeEmail(){
+        confirmRemove.click();
 
     }
 

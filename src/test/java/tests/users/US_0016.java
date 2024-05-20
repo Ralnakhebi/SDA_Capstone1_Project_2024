@@ -3,12 +3,14 @@ package tests.users;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.*;
+import pages.LoginPage;
+import pages.WelcomePage;
+import pages.UserDetailPage;
+import pages.UsersPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
@@ -22,27 +24,23 @@ public class US_0016 {
     String userEmail = "jemel55942@losvtn.com";
     @BeforeClass
     public void SetUp(){
-        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        welcomePage.loginButton.click();
-        loginPage.login("bo@testevolve.com", "FarahAl_huz@1234");
-        usersPage.userModule.click();
+//        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+//        welcomePage.loginButton.click();
+//        loginPage.login("sda2024@gmail.com", "2JDTWt4UWdjGcNv");
+//        usersPage.userModule.click();
     }
     @AfterClass
     public void tearDown(){
         Driver.closeDriver();
     }
 
-    @Test(description = "To verify that the default role cannot be deleted on the User Detail page")
-    public void TC01(){
-        //The Default Role Tage name is not Button, therefor user cannot delete the default role
-        //But We can change the default role to another role and delete the previous default role
-
-    }
     @Test(description = "To verify that the user email cannot be changed")
-    public void TC02(){
+    public void testCase02(){
         //The Email field Tage name is not input, therefor user cannot type on it,
         //we can check if the tage name is label then it not editable
-
+        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
+        welcomePage.loginButton.click();
+        usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='"+userEmail+"']")).click();
         userDetailPage.clickOnEditIconButton();
         String emailFieldTagName = userDetailPage.getEmailField().getTagName();
@@ -52,17 +50,14 @@ public class US_0016 {
     }
 
     @Test(description = "To verify that the username cannot be empty while editing the user Information on the User Detail page")
-    public void TC03() {
+    public void testCase03() {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='"+userEmail+"']")).click();
         userDetailPage.clickOnEditIconButton();
-        try {
-            Thread.sleep(1500);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitSecond();
+
         //userDetailPage.getUsernameField().clear(); is not recommended because the website not tracking that the field is now empty
         //So I try a human behavior select all and backspace button in the keyboard
         userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),Keys.BACK_SPACE);
@@ -70,31 +65,21 @@ public class US_0016 {
     }
 
     @Test(description = "To verify that the username accepts any username except the empty field while editing the user information")
-    public void TC04(){
+    public void testCase04(){
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='"+userEmail+"']")).click();
         userDetailPage.clickOnEditIconButton();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        userEmail="jemel55942@losvtn.com"+(int)(Math.random() * 100);
-        userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),userEmail);
+        waitSecond();
+        userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),userEmail+(int)(Math.random() * 100));
         userDetailPage.clickOnSaveButton();
 
         userDetailPage.clickOnEditIconButton();
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        userEmail="jemel55942@losvtn.com";
+        waitSecond();
         userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),userEmail);
         userDetailPage.clickOnSaveButton();
-
+        waitSecond();
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(userDetailPage.getUpdatedSuccessMessage()));
 
@@ -106,7 +91,7 @@ public class US_0016 {
     }
 
     @Test(description = "To verify that the user can Reset Password on the User Detail page",priority = 1)
-    public void TC05(){
+    public void testCase05(){
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         usersPage.userModule.click();
@@ -123,14 +108,23 @@ public class US_0016 {
     }
 
     @Test(description = "To verify that the user can add another role in the User Detail page")
-    public void TC06(){
+    public void testCase06(){
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
         welcomePage.loginButton.click();
         usersPage.userModule.click();
         Driver.getDriver().findElement(By.xpath("//a[normalize-space()='"+userEmail+"']")).click();
         userDetailPage.addNewRole();
+        waitSecond();
 
 
+    }
+
+    public void waitSecond(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
