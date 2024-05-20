@@ -110,7 +110,6 @@ public class US_0016 {
         userDetailPage.addNewRole();
         waitSecond();
 
-
     }
 
     public void waitSecond(){

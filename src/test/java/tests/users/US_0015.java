@@ -31,10 +31,7 @@ public class US_0015 {
 
     }
 
-    /**
-     *
-     * @param email
-     */
+
     public void addUserByEmail(String email){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(usersPage.addNewUserButton));
