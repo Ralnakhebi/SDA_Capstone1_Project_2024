@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="src/test/java/tests">
+        <packages>
+            <package name="tests.login"></package>
+            <package name="tests.profile"></package>
+            <package name="tests.memberships"></package>
+            <package name="tests.company"></package>
+            <package name="tests.departments"></package>
+            <package name="tests.remoteunits"></package>
+            <package name="tests.teams"></package>
+            <package name="tests.users"></package>
+            <package name="tests.roles"></package>
+            <package name="tests.permissions"></package>
+        </packages>
+    </test>
+</suite>

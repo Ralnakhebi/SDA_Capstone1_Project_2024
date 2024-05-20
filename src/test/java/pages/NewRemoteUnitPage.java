@@ -8,6 +8,7 @@ import utilities.Driver;
 
 import static java.lang.Thread.sleep;
 
+
 public class NewRemoteUnitPage {
     public NewRemoteUnitPage() {
         PageFactory.initElements(Driver.getDriver(), this);
