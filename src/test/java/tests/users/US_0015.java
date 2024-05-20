@@ -15,15 +15,12 @@ import utilities.Driver;
 import java.time.Duration;
 @Listeners(utilities.Listeners.class)
 public class US_0015 {
-    WelcomePage welcomePage = new WelcomePage();
     LoginPage loginPage = new LoginPage();
     UsersPage usersPage = new UsersPage();
 
     @Test(description = "To verify that the new user is appearing on the Users page")
     public void testCase01(){
-        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-        welcomePage.loginButton.click();
-        loginPage.login("sda2024@gmail.com", "2JDTWt4UWdjGcNv");
+        loginPage.editProfileLogin();
         usersPage.userModule.click();
         //User Creating
         addUserByEmail("sda@test.com");

@@ -22,13 +22,7 @@ public class US_0016 {
     LoginPage loginPage = new LoginPage();
     UsersPage usersPage=new UsersPage();
     String userEmail = "jemel55942@losvtn.com";
-    @BeforeClass
-    public void SetUp(){
-//        Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
-//        welcomePage.loginButton.click();
-//        loginPage.login("sda2024@gmail.com", "2JDTWt4UWdjGcNv");
-//        usersPage.userModule.click();
-    }
+
     @AfterClass
     public void tearDown(){
         Driver.closeDriver();
