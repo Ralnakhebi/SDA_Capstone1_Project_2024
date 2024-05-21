@@ -15,6 +15,9 @@ public class US_0015 {
     LoginPage loginPage = new LoginPage();
     UsersPage usersPage = new UsersPage();
 
+    /************************************************
+     *       New User Appear On The User Page       *
+     ************************************************/
     @Test(description = "To verify that the new user is appearing on the Users page")
     public void testCase01(){
         loginPage.editProfileLogin();
