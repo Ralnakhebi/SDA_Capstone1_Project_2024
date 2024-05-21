@@ -75,15 +75,10 @@
                     <threadCount>10</threadCount>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
 
-                    <!--
                     <suiteXmlFiles>
-                        <suiteXmlFile>13AllureTest.xml</suiteXmlFile>
-                    </suiteXmlFiles> -->
+                        <suiteXmlFile>Salha.xml</suiteXmlFile>
+                    </suiteXmlFiles>
 
-                    <!--
-                    <includes>
-                        <include>SDA/test/day19/C04AllureTest02.java</include>
-                    </includes>-->
                 </configuration>
             </plugin>
         </plugins>

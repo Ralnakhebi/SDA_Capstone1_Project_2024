@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/salha/IdeaProjects/SDA_Capstone1_Project_2024/src/test/java/tests/accesToken/US_0021.java">
+        <classes>
+            <class name="tests.accesToken.US_0021">
+                <methods>
+                    <include name="TC01"/>
+                    <include name="TC02"/>
+                    <include name="TC03"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
