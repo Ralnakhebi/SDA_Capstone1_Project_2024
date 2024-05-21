@@ -28,6 +28,9 @@ public class US_0016 {
         Driver.closeDriver();
     }
 
+    /************************************************
+     *         User Email Cannot Be Changed         *
+     ************************************************/
     @Test(description = "To verify that the user email cannot be changed")
     public void testCase02(){
         //The Email field Tage name is not input, therefor user cannot type on it,
@@ -43,6 +46,9 @@ public class US_0016 {
 
     }
 
+    /************************************************
+     *           Username Cannot Be Empty           *
+     ************************************************/
     @Test(description = "To verify that the username cannot be empty while editing the user Information on the User Detail page")
     public void testCase03() {
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
@@ -57,7 +63,9 @@ public class US_0016 {
         userDetailPage.getUsernameField().sendKeys(Keys.chord(Keys.CONTROL, "a"),Keys.BACK_SPACE);
         Assert.assertTrue(userDetailPage.getErrorMessage().isDisplayed());
     }
-
+    /************************************************
+     *           Username Is Changeable             *
+     ************************************************/
     @Test(description = "To verify that the username accepts any username except the empty field while editing the user information")
     public void testCase04(){
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
@@ -84,6 +92,9 @@ public class US_0016 {
 
     }
 
+    /************************************************
+     *           User Can Reset Password            *
+     ************************************************/
     @Test(description = "To verify that the user can Reset Password on the User Detail page",priority = 1)
     public void testCase05(){
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
@@ -101,6 +112,9 @@ public class US_0016 {
 
     }
 
+    /************************************************
+     *           User Add Another Role              *
+     ************************************************/
     @Test(description = "To verify that the user can add another role in the User Detail page")
     public void testCase06(){
         Driver.getDriver().get(ConfigReader.getProperty("baseUrl"));
